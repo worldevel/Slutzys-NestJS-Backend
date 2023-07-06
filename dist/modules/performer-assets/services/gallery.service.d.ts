@@ -1,0 +1,43 @@
+import { Model } from 'mongoose';
+import { PageableData } from 'src/kernel';
+import { PerformerService } from 'src/modules/performer/services';
+import { ReactionService } from 'src/modules/reaction/services/reaction.service';
+import { ObjectId } from 'mongodb';
+import { FileService } from 'src/modules/file/services';
+import { SubscriptionService } from 'src/modules/subscription/services/subscription.service';
+import { UserDto } from 'src/modules/user/dtos';
+import { CheckPaymentService, OrderService } from 'src/modules/payment/services';
+import { GalleryUpdatePayload } from '../payloads/gallery-update.payload';
+import { GalleryDto } from '../dtos';
+import { GalleryCreatePayload, GallerySearchRequest } from '../payloads';
+import { GalleryModel, PhotoModel } from '../models';
+import { PhotoService } from './photo.service';
+export declare class GalleryService {
+    private readonly subscriptionService;
+    private readonly performerService;
+    private readonly reactionService;
+    private readonly photoService;
+    private readonly checkPaymentService;
+    private readonly orderService;
+    private readonly galleryModel;
+    private readonly photoModel;
+    private readonly fileService;
+    constructor(subscriptionService: SubscriptionService, performerService: PerformerService, reactionService: ReactionService, photoService: PhotoService, checkPaymentService: CheckPaymentService, orderService: OrderService, galleryModel: Model<GalleryModel>, photoModel: Model<PhotoModel>, fileService: FileService);
+    create(payload: GalleryCreatePayload, creator?: UserDto): Promise<GalleryDto>;
+    update(id: string | ObjectId, payload: GalleryUpdatePayload, creator?: UserDto): Promise<GalleryDto>;
+    findByIds(ids: string[] | ObjectId[]): Promise<GalleryDto[]>;
+    findById(id: string | ObjectId): Promise<GalleryDto>;
+    details(id: string, user: UserDto): Promise<GalleryDto>;
+    updatePhotoStats(id: string | ObjectId, num?: number): Promise<GalleryModel>;
+    downloadZipPhotos(galleryId: string | ObjectId, user: UserDto): Promise<{
+        path: string;
+        name: string;
+    }[]>;
+    adminSearch(req: GallerySearchRequest): Promise<PageableData<GalleryDto>>;
+    performerSearch(req: GallerySearchRequest, user: UserDto): Promise<PageableData<GalleryDto>>;
+    userSearch(req: GallerySearchRequest, user: UserDto): Promise<PageableData<GalleryDto>>;
+    updateCover(galleryId: string | ObjectId, photoId: ObjectId): Promise<boolean>;
+    delete(id: string | ObjectId): Promise<boolean>;
+    updateCommentStats(id: string | ObjectId, num?: number): Promise<any>;
+    updateLikeStats(id: string | ObjectId, num?: number): Promise<any>;
+}

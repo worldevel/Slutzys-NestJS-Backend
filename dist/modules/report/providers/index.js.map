@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../src/modules/report/providers/index.ts"],"names":[],"mappings":";;;AACA,4CAA+C;AAC/C,4DAAwD;AAE3C,QAAA,qBAAqB,GAAG,uBAAuB,CAAC;AAEhD,QAAA,eAAe,GAAG;IAC7B;QACE,OAAO,EAAE,6BAAqB;QAC9B,UAAU,EAAE,CAAC,UAAsB,EAAE,EAAE,CAAC,UAAU,CAAC,KAAK,CAAC,SAAS,EAAE,4BAAY,CAAC;QACjF,MAAM,EAAE,CAAC,0BAAiB,CAAC;KAC5B;CACF,CAAC"}
